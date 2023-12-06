@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PrivacyPolicy from './PrivacyPolicy';
-import Login from './Login';
+import Component from './Fb';
+// import YourComponent from './component1';
+// import Login from './Login';
 
 const App = () => {
   return (
@@ -9,7 +11,7 @@ const App = () => {
       <Routes>
         {/* Other routes */}
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Component />} />
         {/* Other routes */}
       </Routes>
     </Router>

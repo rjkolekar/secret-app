@@ -5,7 +5,7 @@ const YourComponent = () => {
   const initializeFacebookSDK = () => {
     window.fbAsyncInit = function() {
       window.FB.init({
-        appId: 849897906811026,
+        appId: 888977032574831,
         cookie: true,
         xfbml: true,
         version: 'v13.0' // Use the version you need

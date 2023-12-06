@@ -9,7 +9,7 @@ const Login = () => {
     // Initialize Facebook SDK
     window.fbAsyncInit = function () {
       window.FB.init({
-        appId: '1029156031504065', // Replace with your Facebook App ID
+        appId: '888977032574831', // Replace with your Facebook App ID
         autoLogAppEvents: true,
         xfbml: true,
         version: 'v18.0' // Specify the correct version here
@@ -126,7 +126,7 @@ const Login = () => {
         </div>
       ) : (
         <FacebookLogin
-          appId="1029156031504065"
+          appId="888977032574831"
           autoLoad={false}
           fields="name,email,picture"
           callback={responseFacebook}
