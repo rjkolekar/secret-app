@@ -312,7 +312,7 @@ const Component = () => {
   };
 
   useEffect(() => {
-    document.cookie = 'fblo_1996171220738116=value; SameSite=None; Secure';
+    document.cookie = 'fblo_1031165754841463=value; SameSite=None; Secure';
   }, []);
   useEffect(() => {
     
@@ -325,7 +325,7 @@ const Component = () => {
 
       window.fbAsyncInit = function() {
         window.FB.init({
-          appId: '1996171220738116',
+          appId: '1031165754841463',
           cookie: true,
           xfbml: true,
           version: 'v13.0',
