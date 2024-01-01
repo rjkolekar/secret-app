@@ -1,20 +1,43 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import PrivacyPolicy from './PrivacyPolicy';
-import Component from './Fb';
-// import YourComponent from './component1';
-// import Login from './Login';
+import React, { useState } from 'react';
+import Dashboard from './components/Dashoard';
+import Login from './components/Login';
+import { updateUserAccessToken, loginUser } from './services/app';
+
+
 
 const App = () => {
+  const [user, setUser] = useState(null);
+
+  const handleLogin = async (userData) => {
+    try {
+      const existingUser = await loginUser(userData);
+      if (existingUser) {
+        // Update access token if user already exists
+        await updateUserAccessToken(userData);
+        setUser(userData);
+
+        // Fetch admin posts after successful login
+        
+      }
+    } catch (error) {
+      console.error('Error handling login:', error);
+    }
+  };
+
+  const handleLogout = () => {
+    // Handle logout functionality if required
+    localStorage.clear()
+    setUser(null);
+  };
+
   return (
-    <Router>
-      <Routes>
-        {/* Other routes */}
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/" element={<Component />} />
-        {/* Other routes */}
-      </Routes>
-    </Router>
+    <div className="App">
+      {user ? (
+        <Dashboard user={user} onLogout={handleLogout} />
+      ) : (
+        <Login onLogin={handleLogin} />
+      )}
+    </div>
   );
 };
 
