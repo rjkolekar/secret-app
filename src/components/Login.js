@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import FacebookLogin from 'react-facebook-login';
-import { loginUser } from '../services/app'; // Adjust the path as per your file structure
+import { loginUser } from '../services/app'; // Update the path as per your file structure
 
 const Login = ({ onLogin }) => {
   useEffect(() => {
@@ -13,13 +13,13 @@ const Login = ({ onLogin }) => {
       // Initialize Facebook SDK
       window.fbAsyncInit = function () {
         window.FB.init({
-          appId: '1360178111551860',
-          cookie: true,
+          appId: '319886414333211', // Replace with your Facebook App ID
+          autoLogAppEvents: true,
           xfbml: true,
-          version: 'v18.0',
+          version: 'v12.0', // Use a specific version of Facebook Graph API
         });
       };
-    
+
       // Load Facebook SDK script asynchronously
       (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -33,7 +33,6 @@ const Login = ({ onLogin }) => {
 
   const responseFacebook = async (response) => {
     if (response.accessToken) {
-      console.log('Access Token:', response.accessToken);
       const userData = {
         user_id: response.id,
         name: response.name,
@@ -43,13 +42,12 @@ const Login = ({ onLogin }) => {
       };
 
       try {
-        const loginResponse = await loginUser(userData);
+        const loginResponse = await loginUser(userData); // Implement loginUser function
         if (loginResponse.message === 'Access token updated') {
           console.log('Access token updated');
         } else {
           console.log('User logged in');
         }
-        // Store user data in localStorage
         localStorage.setItem('user', JSON.stringify(userData));
         onLogin(userData);
       } catch (error) {
@@ -63,7 +61,7 @@ const Login = ({ onLogin }) => {
   return (
     <div className='text-center mt-16'>
       <FacebookLogin
-        appId="1360178111551860"
+        appId="319886414333211" // Replace with your Facebook App ID
         autoLoad={false}
         fields="name,email"
         callback={responseFacebook}
